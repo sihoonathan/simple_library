@@ -8,6 +8,14 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
+Book.prototype.changeReadStatus = function() {
+    if (this.read == 'read') {
+        this.read = 'not read';
+    } else {
+        this.read = "read";
+    }
+}
+
 function addBookToLibrary() {
     let title = prompt("title");
     let author = prompt("author");
@@ -35,6 +43,9 @@ function displayBooks() {
 
         let rmvBtn = createRmvBtn(book);
         bookDiv.appendChild(rmvBtn);
+
+        let changeReadBtn = createChangeReadStatus(book);
+        bookDiv.appendChild(changeReadBtn);
 
         for (let key of Object.keys(book)) {
             let bookPara = document.createElement('p');
@@ -80,7 +91,16 @@ function removeFromLib() {
     displayBooks();
 }
 
+function createChangeReadStatus(book) {
+    let btn = document.createElement('button');
+    btn.innerText = "Reverse Read Status";
+    btn.addEventListener('click', (e) => {
+        book.changeReadStatus();
+        displayBooks();
+    });
+    return btn;
+}
+
 createNewBookBtn();
 
-// myLibrary.push(new Book('a', "b", 232, "read"));
 
