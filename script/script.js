@@ -1,6 +1,7 @@
 let myLibrary = [];
 let body = document.querySelector('body');
 
+/*
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -13,6 +14,25 @@ Book.prototype.changeReadStatus = function() {
         this.read = 'not read';
     } else {
         this.read = "read";
+    }
+}
+*/
+
+
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+
+    changeReadStatus() {
+        if (this.read == 'read') {
+            this.read = 'not read';
+        } else {
+            this.read = "read";
+        }
     }
 }
 
